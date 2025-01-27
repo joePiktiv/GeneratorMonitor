@@ -6,7 +6,7 @@ public class WindGenerator : EnergyGenerator
 {
 
     [XmlElement("Location")]
-    public string Location { get; set; }
+    public string? Location { get; set; }
 }
 
 public class GasGenerators : EnergyGenerator

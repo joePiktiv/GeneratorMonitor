@@ -7,17 +7,17 @@ public class ReferenceData
 {
 
     [XmlElement("Factors")]
-    public Factors Factors { get; set; }
+    public required Factors Factors { get; set; }
 }
 
 public class Factors
 {
 
     [XmlElement("ValueFactor")]
-    public ValueFactor ValueFactor { get; set; }
+    public required ValueFactor ValueFactor { get; set; }
 
     [XmlElement("EmissionsFactor")]
-    public EmissionsFactor EmissionsFactor { get; set; }
+    public required EmissionsFactor EmissionsFactor { get; set; }
 }
 
 public abstract class Factor

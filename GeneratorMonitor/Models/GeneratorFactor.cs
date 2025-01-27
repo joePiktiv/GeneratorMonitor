@@ -4,14 +4,14 @@ namespace GeneratorMonitor.Models;
 
 public class AllFactors
 {
-    public List<GeneratorFactor> Collections { get; set; }
+    public required List<GeneratorFactor> Collections { get; set; }
 
     public double GetValueFactor(string type, ReferenceData data)
     {
         try
         {
             var key = ConvertToGeneratorType(type);
-            var level = Collections.Find(c => key == c.GeneratorType).ValueFactor;
+            var level = Collections.Find(c => key == c.GeneratorType)!.ValueFactor;
             return data.Factors.ValueFactor.Levels[level];
         } catch
         {
@@ -24,8 +24,8 @@ public class AllFactors
         try
         {
             var key = ConvertToGeneratorType(type);
-            var level = Collections.Find(c => key == c.GeneratorType).EmissionFactor;
-            return data.Factors.EmissionsFactor.Levels[level];
+            var level = Collections.Find(c => key == c.GeneratorType)!.EmissionFactor;
+            return data.Factors.EmissionsFactor.Levels[level!];
         }
         catch
         {
@@ -49,7 +49,7 @@ public class GeneratorFactor
 {
     public string? GeneratorType { get; set; }
     public required string ValueFactor { get; set; }
-    public string EmissionFactor { get; set; }
+    public string? EmissionFactor { get; set; }
 }
 
 public class GeneratorMap : ClassMap<GeneratorFactor>

@@ -26,7 +26,7 @@ public class FileHandler
         T result;
         using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
         {
-            result = (T) serializer.Deserialize(fileStream);
+            result = (T) serializer.Deserialize(fileStream)!;
         }
         return result;
     }
