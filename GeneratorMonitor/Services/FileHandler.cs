@@ -63,11 +63,9 @@ public class FileHandler
 
     public static string UniqueFileName(string fileName, string folderName, string tag)
     {
-        
-        if (File.Exists(fileName))
-        {
-            string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            return Path.Combine(folderName, $"{tag}{Path.GetFileNameWithoutExtension(fileName)}_{timestamp}{Path.GetExtension(fileName)}");
-        } else return fileName;
+        var newFilename = Path.Combine(folderName, $"{tag}{Path.GetFileNameWithoutExtension(fileName)}{Path.GetExtension(fileName)}");
+        if (!File.Exists(newFilename)) return newFilename;
+        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        return Path.Combine(folderName, $"{tag}{Path.GetFileNameWithoutExtension(fileName)}_{timestamp}{Path.GetExtension(fileName)}");
     }
 }
